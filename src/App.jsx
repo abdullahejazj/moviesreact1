@@ -5,12 +5,12 @@ import Router from "./routes";
 const App = () => {
   return (
     <>
-      {/* <Helmet>
+      <Helmet>
         <script
           data-cfasync="false"
           src="//d2kd9y1bp4zc6.cloudfront.net/?bydkd=949007"
         ></script>
-      </Helmet> */}
+      </Helmet>
       <Router />
     </>
   );
