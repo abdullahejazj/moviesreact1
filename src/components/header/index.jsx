@@ -21,7 +21,7 @@ const nav = [
 
 // ----------------------------------------------------------------------
 
-export default function Header() {
+export default function Header () {
   const { pathname } = useLocation();
   const headerRef = useRef(null);
   const mobileRef = useRef(null);
@@ -61,9 +61,8 @@ export default function Header() {
                 <Link
                   onClick={handleMobile}
                   to={item.path}
-                  className={`${
-                    pathname === item.path ? 'text-red-600' : 'hover:text-red-600'
-                  } duration-300`}
+                  className={`${pathname === item.path ? 'text-red-600' : 'hover:text-red-600'
+                    } duration-300`}
                 >
                   {item.name}
                 </Link>

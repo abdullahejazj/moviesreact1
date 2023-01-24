@@ -4,14 +4,15 @@ import { imageApi } from '../../api';
 
 // ----------------------------------------------------------------------
 
-export default function BannerItem({ item }) {
+export default function BannerItem ({ item }) {
+  console.log('➡️ 🤷‍♂️ file: BannerItem.jsx:8 🤷‍♂️ item', item)
   const background = imageApi.originalImage(
     item.backdrop_path ? item.backdrop_path : item.poster_path
   );
 
   return (
     <div
-      className="relative h-508 mt-812:h-700 bg-cover bg-top bg-no-repeat"
+      className="relative  h-508 mt-812:h-700 bg-cover bg-top bg-no-repeat"
       style={{
         backgroundImage: `url(${background})`,
       }}

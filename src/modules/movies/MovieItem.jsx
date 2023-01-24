@@ -5,7 +5,7 @@ import { handleScrollToTop } from '../../utils';
 
 // ----------------------------------------------------------------------
 
-export default function MovieItem({ item, category }) {
+export default function MovieItem ({ item, category }) {
   const background = imageApi.w500Image(
     item.backdrop_path ? item.backdrop_path : item.poster_path
   );
@@ -19,9 +19,9 @@ export default function MovieItem({ item, category }) {
 
   return (
     <Link to={pathInfo} onClick={handleScrollToTop}>
-      <div className="relative movie__item h-44 bg-cover bg-center bg-no-repeat group duration-200 my-3 mx-3 shadow-lg hover:shadow-lg border-l-0 hover:border-l-4 border-red-600 overflow-hidden rounded-md">
+      <div className="relative movie__item h-380 bg-cover bg-center bg-no-repeat group duration-200 my-3 mx-3 shadow-lg hover:shadow-lg border-l-0 hover:border-l-4 border-red-600 overflow-hidden rounded-md">
         <div className="absolute top-0 left-0 w-full h-full">
-          <img src={background} className="w-full h-full object-cover" alt="" />
+          <img src={imageApi.w500Image(item.poster_path)} className="h-380 w-auto object-cover my-auto rounded-md shadow-lg banner__image" alt="" />
         </div>
         <div className="absolute top-0 left-0 w-full h-full overlay overlay-5" />
         <div className="absolute top-0 left-0 w-full h-full">
@@ -36,14 +36,14 @@ export default function MovieItem({ item, category }) {
                 {item.release_date
                   ? item.release_date.slice(0, 4)
                   : item.first_air_date
-                  ? item.first_air_date.slice(0, 4)
-                  : ''}
+                    ? item.first_air_date.slice(0, 4)
+                    : ''}
               </span>
             </div>
-            <div className="absolute bottom-7 left-5">
+            <div className="absolute top-40 left-5">
               <Link
                 to={path}
-                className="flex items-center px-3 py-2 bg-red-600 font-semibold tracking-wider uppercase text-sm btn__primary space-x-1 rounded overflow-hidden"
+                className="flex items-center px-3 py-2 bg-red-600 bg-opacity-30 font-semibold tracking-wider uppercase text-sm btn__primary space-x-1 rounded overflow-hidden"
               >
                 <svg
                   width="20"

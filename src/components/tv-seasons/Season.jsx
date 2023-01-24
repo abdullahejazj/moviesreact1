@@ -5,7 +5,7 @@ import { tmdbApi, imageApi } from '../../api';
 
 // ----------------------------------------------------------------------
 
-export default function Season({ season, handleUrl, id, background }) {
+export default function Season ({ season, handleUrl, id, background }) {
   const episodeRef = useRef(null);
   const navigate = useNavigate();
   const { category } = useParams();
@@ -27,7 +27,7 @@ export default function Season({ season, handleUrl, id, background }) {
       try {
         const response = await tmdbApi.getTVSeasons(id, season.season_number);
         setEpisodes(response.episodes);
-      } catch (error) {}
+      } catch (error) { }
     };
 
     fetchEpisode();

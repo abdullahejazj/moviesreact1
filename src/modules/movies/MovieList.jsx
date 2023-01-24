@@ -10,7 +10,7 @@ import { tmdbApi, category, movieType, tvType } from '../../api';
 
 // ----------------------------------------------------------------------
 
-export default function MovieList({ type, category: _category, title, id }) {
+export default function MovieList ({ type, category: _category, title, id }) {
   const [movies, setMovies] = useState([]);
   const [preloader, setPreloader] = useState(true);
 
@@ -28,7 +28,7 @@ export default function MovieList({ type, category: _category, title, id }) {
       {
         breakpoint: 1700,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 5,
           slidesToScroll: 4,
         },
       },
@@ -90,7 +90,7 @@ export default function MovieList({ type, category: _category, title, id }) {
         } else {
           response = await tmdbApi.similar(_category, id);
         }
-      } catch (error) {}
+      } catch (error) { }
       setMovies(response.results);
       setPreloader(false);
     };
