@@ -12,6 +12,7 @@ export default function Video({ src }) {
         src={src}
         frameBorder="0"
         allowFullScreen
+        sandbox
       />
     </div>
   );
