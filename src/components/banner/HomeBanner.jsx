@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import Slider from 'react-slick';
-import BannerItem from '../banner/BannerItem';
-import NextArrow from './NextArrow';
-import PrevArrow from './PrevArrow';
+import React, { useState, useEffect } from "react";
+import Slider from "react-slick";
+import BannerItem from "../banner/BannerItem";
+import NextArrow from "./NextArrow";
+import PrevArrow from "./PrevArrow";
 // api
-import { tmdbApi, movieType } from '../../api';
+import { tmdbApi, movieType } from "../../api";
 
 // ----------------------------------------------------------------------
 
@@ -37,7 +37,7 @@ export default function HomeBanner() {
   }, []);
 
   return (
-    <div className="mb-10 group banner">
+    <div className=" group banner">
       <Slider {...settings}>
         {movies.map((item, i) => (
           <BannerItem key={i} item={item} />

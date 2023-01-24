@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { Star, StarHalf, StarSolid } from '../star';
+import React from "react";
+import { Link, useParams } from "react-router-dom";
+import { Star, StarHalf, StarSolid } from "../star";
 
 // ----------------------------------------------------------------------
 
@@ -29,18 +29,22 @@ export default function Overview({ title, overview }) {
   };
 
   const path =
-    category === 'movie' ? `/catalog/movie/${overview.id}` : `/catalog/tv/${overview.id}`;
+    category === "movie"
+      ? `/home/catalog/movie/${overview.id}`
+      : `/home/catalog/tv/${overview.id}`;
   // const pathPlay = category === 'movie' ? `/movie/${overview.id}/play` : `/tv/${overview.id}/play`;
 
   return (
-    <div className="text-gray-300 relative z-10 space-y-3 pt-3">
+    <div className="text-gray-300 relative z-10 space-y-3 pt-3 px-4">
       <h1>
         <Link to={path} className="text-2xl hover:text-red-600 duration-150">
           {title}
         </Link>
       </h1>
-      {category === 'tv' && (
-        <h2 className="text-lg">Episode name:&nbsp;{overview.name || overview.title}</h2>
+      {category === "tv" && (
+        <h2 className="text-lg">
+          Episode name:&nbsp;{overview.name || overview.title}
+        </h2>
       )}
       <p>{overview.overview}</p>
       <div>
@@ -64,4 +68,4 @@ export default function Overview({ title, overview }) {
       </div>
     </div>
   );
-};
+}

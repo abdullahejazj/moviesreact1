@@ -1,22 +1,28 @@
-import React from 'react';
-import { imageApi } from '../../api';
-import Overview from '../overview';
-import { Link, useParams } from 'react-router-dom';
+import React from "react";
+import { imageApi } from "../../api";
+import Overview from "../overview";
+import { Link, useParams } from "react-router-dom";
 
 // ----------------------------------------------------------------------
 
 export default function BannerDetails({ movieDetails }) {
   const { category, id } = useParams();
   const background = imageApi.originalImage(
-    movieDetails.backdrop_path ? movieDetails.backdrop_path : movieDetails.poster_path
+    movieDetails.backdrop_path
+      ? movieDetails.backdrop_path
+      : movieDetails.poster_path
   );
 
   const title = movieDetails.name ? movieDetails.name : movieDetails.title;
   const poster = imageApi.w500Image(
-    movieDetails.poster_path ? movieDetails.poster_path : movieDetails.backdrop_path
+    movieDetails.poster_path
+      ? movieDetails.poster_path
+      : movieDetails.backdrop_path
   );
   const path =
-    category === 'movie' ? `/catalog/movie/${id}/play` : `/catalog/tv/${id}/play`;
+    category === "movie"
+      ? `/home/catalog/movie/${id}/play`
+      : `/home/catalog/tv/${id}/play`;
 
   return (
     <div

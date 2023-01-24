@@ -1,33 +1,35 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import Episode from './Episode';
-import { tmdbApi, imageApi } from '../../api';
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Episode from "./Episode";
+import { tmdbApi, imageApi } from "../../api";
 
 // ----------------------------------------------------------------------
 
-export default function Season ({ season, handleUrl, id, background }) {
+export default function Season({ season, handleUrl, id, background }) {
   const episodeRef = useRef(null);
   const navigate = useNavigate();
   const { category } = useParams();
   const [episodes, setEpisodes] = useState([]);
 
   const handleSeason = () => {
-    if (category === 'movie') {
+    if (category === "movie") {
       navigate(`/movie/${season.id}/play`);
     } else {
-      episodeRef.current.classList.toggle('h-0');
+      episodeRef.current.classList.toggle("h-0");
     }
   };
 
-  const bgMovie = season.backdrop_path ? season.backdrop_path : season.poster_path;
+  const bgMovie = season.backdrop_path
+    ? season.backdrop_path
+    : season.poster_path;
 
   useEffect(() => {
     const fetchEpisode = async () => {
-      if (category !== 'tv') return;
+      if (category !== "tv") return;
       try {
         const response = await tmdbApi.getTVSeasons(id, season.season_number);
         setEpisodes(response.episodes);
-      } catch (error) { }
+      } catch (error) {}
     };
 
     fetchEpisode();
@@ -61,7 +63,7 @@ export default function Season ({ season, handleUrl, id, background }) {
             height="20"
             className="ml-0 transform duration-200 -translate-x-3 group-hover:translate-x-0"
             viewBox="0 0 24 24"
-            style={{ fill: '#D1D5DB' }}
+            style={{ fill: "#D1D5DB" }}
           >
             <path d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"></path>
           </svg>

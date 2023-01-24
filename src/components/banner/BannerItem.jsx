@@ -1,11 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { imageApi } from '../../api';
+import React from "react";
+import { Link } from "react-router-dom";
+import { imageApi } from "../../api";
 
 // ----------------------------------------------------------------------
 
-export default function BannerItem ({ item }) {
-  console.log('➡️ 🤷‍♂️ file: BannerItem.jsx:8 🤷‍♂️ item', item)
+export default function BannerItem({ item }) {
   const background = imageApi.originalImage(
     item.backdrop_path ? item.backdrop_path : item.poster_path
   );
@@ -30,10 +29,12 @@ export default function BannerItem ({ item }) {
               <span>{item.release_date.slice(0, 4)}</span>
             </div>
 
-            <p className="line-5 text-lg leading-7 banner__desc">{item.overview}</p>
+            <p className="line-5 text-lg leading-7 banner__desc">
+              {item.overview}
+            </p>
             <div className="py-3 flex justify-between mt-414:justify-start mt-414:space-x-5 font-semibold tracking-wider uppercase banner__btn">
               <Link
-                to={`/catalog/movie/${item.id}/play`}
+                to={`/home/catalog/movie/${item.id}/play`}
                 className="px-3 mt-350:px-2 py-2 mt-414:px-4 mt-414:py-3 inline-flex items-center bg-red-600 btn__primary mt-350:space-x-3 rounded shadow-lg overflow-hidden"
               >
                 <svg
@@ -48,7 +49,7 @@ export default function BannerItem ({ item }) {
               </Link>
 
               <Link
-                to={`/catalog/movie/${item.id}`}
+                to={`/home/catalog/movie/${item.id}`}
                 className="px-3 mt-350:px-2 py-2 mt-414:px-4 mt-414:py-3 inline-flex items-center bg-blue-600 btn__primary mt-350:space-x-3 rounded shadow-lg overflow-hidden"
               >
                 <svg
