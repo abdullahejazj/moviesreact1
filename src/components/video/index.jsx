@@ -1,19 +1,22 @@
-export default function Video({ src }) {
-  console.log("src: ", src);
+import React, { useEffect, useRef, useState } from "react";
+
+export default function Video({ src, id }) {
+  console.log("src: ", id);
+
   return (
-    <div
-      className="relative w-full duration-200 rounded-md overflow-hidden"
-      style={{ paddingBottom: "55%" }}
-    >
-      <iframe
-        id="myIframe"
-        title={src}
-        className="absolute top-0 left-0 w-full h-full z-10"
-        src={src}
-        frameBorder="0"
-        allowFullScreen
-        sandbox
-      />
-    </div>
+    <>
+      <div
+        className="relative w-full duration-200 rounded-md overflow-hidden"
+        style={{ paddingBottom: "55%" }}
+      >
+        <iframe
+          title={src}
+          src={`https://2embed.org/pl.php/player.php?id=${id}`}
+          height="500px"
+          allowFullScreen
+          className="absolute top-0 left-0 w-full h-full z-10"
+        />
+      </div>
+    </>
   );
 }

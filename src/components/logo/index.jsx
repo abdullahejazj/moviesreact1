@@ -1,15 +1,16 @@
+import Cookies from "js-cookie";
 import React from "react";
 import { Link } from "react-router-dom";
-
-import logo from "../../assets/images/logo-ax.png";
 
 // ----------------------------------------------------------------------
 
 export default function Logo({ height }) {
+  const websiteTitle = Cookies.get("website");
+
   return (
     <div>
       <Link to="/home" className="flex  items-center ">
-        <p className="text-3xl font-bold text-red-600 pt-4 ">Afdah</p>
+        <p className="text-3xl font-bold text-red-600 pt-4 ">{websiteTitle}</p>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

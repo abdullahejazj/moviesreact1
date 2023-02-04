@@ -1,5 +1,9 @@
+import Cookies from "js-cookie";
+
 export default function Page({ title, children }) {
-  document.title = `${title} - Afdah Movies`;
+  const websiteTitle = Cookies.get("website");
+
+  document.title = `${title} - ${websiteTitle}`;
 
   return <>{children}</>;
 }

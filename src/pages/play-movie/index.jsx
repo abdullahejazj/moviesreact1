@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
+
+// api
+import { embedEpisode, embedMovie, imageApi, tmdbApi } from "../../api";
+import Overview from "../../components/overview";
 // components
 import Page from "../../components/page";
-import Video from "../../components/video";
-import Overview from "../../components/overview";
 import Preloader from "../../components/preloader";
 import { Season } from "../../components/tv-seasons";
+import Video from "../../components/video";
 import { MovieList } from "../../modules/movies";
-// api
-import { tmdbApi, imageApi, embedMovie, embedEpisode } from "../../api";
 import { handleScrollToTop } from "../../utils";
 
 // ----------------------------------------------------------------------
@@ -94,7 +95,8 @@ export default function PlayMovie() {
                 category === "tv" ? "w-full mt-812:w-2/3 mb-5 mt-812:mb-0" : ""
               }`}
             >
-              <Video src={src} />
+              <Video src={src} id={id} />
+
               <Overview title={title} overview={overview} />
             </div>
             {category === "tv" && (
