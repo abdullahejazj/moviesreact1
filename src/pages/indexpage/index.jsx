@@ -11,14 +11,17 @@ import style from "./style.css";
 const IndexPage = () => {
   const [websiteDetails, setWebsiteDetails] = useState([]);
   const [currentWebsite, setCurrentWebsite] = useState({});
+  const [testApi, setTestApi] = useState({});
+  console.log("testApi: ", testApi);
 
+  // https://seapi.link/?type=imdb&id=10872600&max_results=1
   const currentUrl = document.URL;
   const websiteTitle = Cookies.get("website");
-  
+
   document.title = websiteTitle;
   useEffect(() => {
     axios
-      .get("http://moviesapi.local/wp-json/jet-cct/movies_websites")
+      .get("https://filmyhubs.net/wp-json/jet-cct/movies_websites")
       .then(function (response) {
         // handle success
         setWebsiteDetails(response.data);

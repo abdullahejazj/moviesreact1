@@ -9,7 +9,7 @@ export default function Logo({ height }) {
 
   return (
     <div>
-      <Link to="/home" className="flex  items-center ">
+      <Link to="/home" className="flex  items-center gap-2 ">
         <p className="text-3xl font-bold text-red-600 pt-4 ">{websiteTitle}</p>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -17,7 +17,7 @@ export default function Logo({ height }) {
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="w-7 h-7 text-white mt-4"
+          class="w-7 h-7 text-white mt-1"
         >
           <path
             stroke-linecap="round"

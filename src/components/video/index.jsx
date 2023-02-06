@@ -11,7 +11,7 @@ export default function Video({ src, id }) {
       >
         <iframe
           title={src}
-          src={`https://2embed.org/pl.php/player.php?id=${id}`}
+          src={`https://vidsrc.me/embed/${id}`}
           height="500px"
           allowFullScreen
           className="absolute top-0 left-0 w-full h-full z-10"

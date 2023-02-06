@@ -78,8 +78,7 @@ export default function PlayMovie() {
   }, [id]);
 
   if (preloader) return <Preloader />;
-  const iframe = document.getElementById("myIframe");
-  console.log("iframe: ", iframe);
+
   return (
     <Page title={title}>
       <div
