@@ -15,6 +15,7 @@ export default function Video({ src, id }) {
           height="500px"
           allowFullScreen
           className="absolute top-0 left-0 w-full h-full z-10"
+          // sandbox="allow-scripts"
         />
       </div>
     </>
