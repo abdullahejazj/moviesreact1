@@ -10,11 +10,11 @@ import style from "./style.css";
 
 const IndexPage = () => {
   const [websiteDetails, setWebsiteDetails] = useState([]);
+  console.log("websiteDetails: ", websiteDetails);
   const [currentWebsite, setCurrentWebsite] = useState({});
   const [testApi, setTestApi] = useState({});
   console.log("testApi: ", testApi);
 
-  // https://seapi.link/?type=imdb&id=10872600&max_results=1
   const currentUrl = document.URL;
   const websiteTitle = Cookies.get("website");
 

@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import Page from '../../components/page';
-import Cast from '../../components/cast';
-import { MovieList } from '../../modules/movies';
-import Preloader from '../../components/preloader';
-import { BannerMovieDetails } from '../../components/banner';
-import Iframe from './Iframe';
-import { tmdbApi } from '../../api';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+import { tmdbApi } from "../../api";
+import { BannerMovieDetails } from "../../components/banner";
+import Cast from "../../components/cast";
+import Page from "../../components/page";
+import Preloader from "../../components/preloader";
+import { MovieList } from "../../modules/movies";
+import Iframe from "./Iframe";
 
 // ----------------------------------------------------------------------
 
@@ -15,7 +16,7 @@ export default function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState({});
   const [videos, setVideos] = useState([]);
   const [preloader, setPreloader] = useState(true);
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
 
   const fetchDetails = async () => {
     try {
@@ -48,9 +49,14 @@ export default function MovieDetails() {
       <Cast />
       <div className="w-11/12 mx-auto">
         <div className="-mx-3">
-          <MovieList category={category} type="similar" title="Similar" id={id} />
+          <MovieList
+            category={category}
+            type="similar"
+            title="Similar"
+            id={id}
+          />
         </div>
       </div>
     </Page>
   );
-};
+}

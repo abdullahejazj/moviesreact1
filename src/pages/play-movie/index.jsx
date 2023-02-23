@@ -9,6 +9,7 @@ import Page from "../../components/page";
 import Preloader from "../../components/preloader";
 import { Season } from "../../components/tv-seasons";
 import Video from "../../components/video";
+import Ads from "../../modules/Ads";
 import { MovieList } from "../../modules/movies";
 import { handleScrollToTop } from "../../utils";
 

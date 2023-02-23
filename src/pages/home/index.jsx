@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
-// components
-import Page from '../../components/page';
-import { MovieList } from '../../modules/movies';
-import { HomeBanner } from '../../components/banner';
+import React, { useEffect } from "react";
+
 // api
-import { category, movieType } from '../../api';
-import { handleScrollToTop } from '../../utils';
+import { category, movieType } from "../../api";
+import { HomeBanner } from "../../components/banner";
+// components
+import Page from "../../components/page";
+import Ads from "../../modules/Ads";
+import { MovieList } from "../../modules/movies";
+import { handleScrollToTop } from "../../utils";
 
 // ----------------------------------------------------------------------
 
@@ -16,6 +18,7 @@ export default function Home() {
 
   return (
     <Page title="Home">
+      <Ads />
       <HomeBanner />
       <div className="w-full mt-812:w-11/12 mx-auto">
         <MovieList
@@ -33,8 +36,16 @@ export default function Home() {
           type={movieType.top_rated}
           title="Top Rated Movies"
         />
-        <MovieList category={category.tv} type={movieType.trending} title="Trending TV" />
-        <MovieList category={category.tv} type={movieType.popular} title="Popular TV" />
+        <MovieList
+          category={category.tv}
+          type={movieType.trending}
+          title="Trending TV"
+        />
+        <MovieList
+          category={category.tv}
+          type={movieType.popular}
+          title="Popular TV"
+        />
         <MovieList
           category={category.tv}
           type={movieType.top_rated}
@@ -43,4 +54,4 @@ export default function Home() {
       </div>
     </Page>
   );
-};
+}
