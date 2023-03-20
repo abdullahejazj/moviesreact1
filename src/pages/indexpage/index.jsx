@@ -10,15 +10,15 @@ import style from "./style.css";
 
 const IndexPage = () => {
   const [websiteDetails, setWebsiteDetails] = useState([]);
-  console.log("websiteDetails: ", websiteDetails);
   const [currentWebsite, setCurrentWebsite] = useState({});
-  const [testApi, setTestApi] = useState({});
-  console.log("testApi: ", testApi);
+  console.log("currentWebsite: ", currentWebsite);
 
   const currentUrl = document.URL;
-  const websiteTitle = Cookies.get("website");
 
-  document.title = websiteTitle;
+  document.title = currentWebsite[0]?.website_title
+    ? currentWebsite[0]?.website_title
+    : "Movies";
+
   useEffect(() => {
     axios
       .get("https://filmyhubs.net/wp-json/jet-cct/movies_websites")
@@ -67,6 +67,7 @@ const IndexPage = () => {
           </Link>
 
           <div
+            className="indexcontent"
             dangerouslySetInnerHTML={{
               __html: currentWebsite[0].website_content,
             }}
