@@ -1,8 +1,8 @@
-import { Helmet } from "react-helmet";
+import React from "react";
 
 import Router from "./routes";
 
-const App = () => {
+const App = ({ data }) => {
   return (
     <>
       <Router />

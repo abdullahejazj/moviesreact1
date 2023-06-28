@@ -1,6 +1,8 @@
 import React, { lazy } from "react";
 import { Navigate, useRoutes } from "react-router-dom";
+
 import { MainLayout } from "../layouts";
+import About from "../pages/about";
 import IndexPage from "../pages/indexpage";
 
 // ----------------------------------------------------------------------
@@ -32,6 +34,8 @@ export default function Router() {
     },
     { path: "/", element: <IndexPage /> },
     { path: "404", element: <PageNotFound /> },
+
     { path: "*", element: <Navigate to="/404" replace /> },
+    { path: "/about", element: <About/> },
   ]);
 }

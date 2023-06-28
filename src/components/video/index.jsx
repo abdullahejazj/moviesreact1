@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
 export default function Video({ src, id }) {
-  console.log("src: ", id);
-
   return (
     <>
       <div

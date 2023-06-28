@@ -1,5 +1,6 @@
-import './style.css';
 import background from '../../assets/images/background.jpg';
+
+import './style.css';
 
 // ----------------------------------------------------------------------
 

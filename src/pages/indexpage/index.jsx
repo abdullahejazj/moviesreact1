@@ -1,52 +1,25 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { HomeBanner } from "../../components/banner";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
+import DataContext from "../../context/DataContext";
 import style from "./style.css";
 
 const IndexPage = () => {
-  const [websiteDetails, setWebsiteDetails] = useState([]);
-  const [currentWebsite, setCurrentWebsite] = useState({});
-  console.log("currentWebsite: ", currentWebsite);
+  const data = useContext(DataContext);
 
-  const currentUrl = document.URL;
-
-  document.title = currentWebsite[0]?.website_title
-    ? currentWebsite[0]?.website_title
-    : "Movies";
-
-  useEffect(() => {
-    axios
-      .get("https://filmyhubs.net/wp-json/jet-cct/movies_websites")
-      .then(function (response) {
-        // handle success
-        setWebsiteDetails(response.data);
-      });
-  }, []);
-
-  const getOnlyArray = () => {
-    // this will return only item which match the provided id
-    return setCurrentWebsite(
-      websiteDetails.filter((s) => s.website_url === currentUrl)
-    );
-  };
-
-  useEffect(() => {
-    getOnlyArray();
-  }, [websiteDetails]);
-
-  currentWebsite.length === 1 &&
-    Cookies.set("website", currentWebsite[0].website_title, { expires: 20000 });
+  data && Cookies.set("website", data.website_title, { expires: 20000 });
 
   return (
     <>
       <Header />
+
       <HomeBanner />
-      {currentWebsite.length === 1 && (
+      {data && (
         <div className="flex flex-col justify-center items-center px-20  pt-6 pb-20 bg-black text-white">
           <Link
             to="/home"
@@ -60,16 +33,13 @@ const IndexPage = () => {
             >
               <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path>
             </svg>
-            <span className="pt-0.5">
-              Visit {currentWebsite[0].website_title} and Watch Unlimited Movies
-              and Tv Shows
-            </span>
+            <span className="pt-0.5 ">Visit {data.website_title}</span>
           </Link>
 
           <div
-            className="indexcontent"
+            className="indexcontent mt-4"
             dangerouslySetInnerHTML={{
-              __html: currentWebsite[0].website_content,
+              __html: data.website_content,
             }}
           />
         </div>

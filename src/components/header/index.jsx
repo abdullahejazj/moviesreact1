@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 
+import DataContext from "../../context/DataContext";
 import Logo from "../logo";
 
 // ----------------------------------------------------------------------
@@ -26,10 +27,16 @@ export default function Header() {
   const { pathname } = useLocation();
   const headerRef = useRef(null);
   const mobileRef = useRef(null);
-
+  const data = useContext(DataContext);
   const handleMobile = () => {
     mobileRef.current.classList.toggle("-translate-y-full");
   };
+
+  useEffect(() => {
+    if (data) {
+      document.title = data.header_title ? data.header_title : "Loading ...."; // Set the document title
+    }
+  }, [data]);
 
   return (
     <header
@@ -37,7 +44,7 @@ export default function Header() {
       className="h-16 px-3 mt-568:px-10 max-w-screen-2xl  bg-black  top-0 z-30 duration-300"
     >
       <div className="flex items-center justify-between">
-        <Logo height="h-10" />
+        <Logo height="h-10" data={data} />
         <div
           ref={mobileRef}
           className="header__moblie transform -translate-y-full mt-568:translate-y-0 duration-300 mt-568:bg-transparent mt-568:pt-0"

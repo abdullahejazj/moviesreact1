@@ -1,23 +1,30 @@
-import React, { Suspense } from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import React, { Suspense } from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import Preloader from './components/preloader';
+import App from "./App";
+import Preloader from "./components/preloader";
+import DataContext from "./context/DataContext";
+import DataProvider from "./context/DataProvider";
+import reportWebVitals from "./reportWebVitals";
+
+import "./index.css";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Suspense fallback={<Preloader />}>
-        <App />
+        <DataProvider>
+          <DataContext.Consumer>
+            {(data) => <App data={data} />}
+          </DataContext.Consumer>
+        </DataProvider>
       </Suspense>
     </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById('root'),
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

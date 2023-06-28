@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import { imageApi } from "../../api";
 import { handleScrollToTop } from "../../utils";
 
 // ----------------------------------------------------------------------
 
 export default function MovieItem({ item, category }) {
-  console.log("item: ", item);
+  
   const background = imageApi.w500Image(
     item.backdrop_path ? item.backdrop_path : item.poster_path
   );
