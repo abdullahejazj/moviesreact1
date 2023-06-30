@@ -10,14 +10,14 @@ const DataProvider = ({ children }) => {
     const fetchData = async () => {
       try {
         const websiteUrl = window.location.hostname;
-        console.log("websiteUrl: ", "https://" + websiteUrl + "/");
-        const response = await fetch(`https://websitesapi.vercel.app/api/`);
+
+        const response = await fetch(
+          `http://123-movies.world:3000/api/url/${"putlocker2.monster"}`
+        );
+        console.log("response: ", response);
         if (response.ok) {
-          const item = await response.json();
-          const filteredWebsites = item.filter(
-            (website) => website.website_url === "https://" + websiteUrl + "/"
-          );
-          setData(filteredWebsites[0]);
+          const data = await response.json();
+          setData(data);
         } else {
           console.error("Error fetching data:", response.status);
         }
