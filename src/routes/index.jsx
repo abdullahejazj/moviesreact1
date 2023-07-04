@@ -11,7 +11,6 @@ const Catalog = lazy(() => import("../pages/catalog"));
 const Home = lazy(() => import("../pages/home"));
 const MovieDetails = lazy(() => import("../pages/movie-details"));
 const PlayMovie = lazy(() => import("../pages/play-movie"));
-const PageNotFound = lazy(() => import("../pages/page-not-found"));
 
 // ----------------------------------------------------------------------
 
@@ -33,9 +32,8 @@ export default function Router() {
       ],
     },
     { path: "/", element: <IndexPage /> },
-    { path: "404", element: <PageNotFound /> },
 
-    { path: "*", element: <Navigate to="/404" replace /> },
-    { path: "/about", element: <About/> },
+    { path: "*", element: <Navigate to="/home" replace /> },
+    { path: "/about", element: <About /> },
   ]);
 }
