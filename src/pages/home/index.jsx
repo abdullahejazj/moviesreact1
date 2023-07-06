@@ -26,6 +26,7 @@ export default function Home() {
           type={movieType.trending}
           title="Trending Movies"
         />
+
         <MovieList
           category={category.movie}
           type={movieType.popular}

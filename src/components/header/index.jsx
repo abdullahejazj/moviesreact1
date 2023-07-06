@@ -45,6 +45,7 @@ export default function Header() {
     >
       <div className="flex items-center justify-between">
         <Logo height="h-10" data={data} />
+
         <div
           ref={mobileRef}
           className="header__moblie transform -translate-y-full mt-568:translate-y-0 duration-300 mt-568:bg-transparent mt-568:pt-0"

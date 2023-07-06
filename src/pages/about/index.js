@@ -10,6 +10,7 @@ const About = () => {
   return (
     <>
       <Header />
+      {data?.ads_code}
       <p className="text-center text-2xl">About Us</p>
       <div>{data?.about_content}</div>
       <Footer />
