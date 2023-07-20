@@ -13,7 +13,7 @@ function generateSiteMap() {
     $pageUrls = array_map(function($movie) {
       return '
           <url>
-            <loc>https://' . $_SERVER['HTTP_HOST'] . '/home/catalog/movie/' . $movie['id'] . '</loc>
+            <loc>https://' . $_SERVER['HTTP_HOST'] . '/home/catalog/movie/' . $movie['title'] . '</loc>
           </url>';
     }, $data['results']);
 

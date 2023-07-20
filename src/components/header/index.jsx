@@ -12,12 +12,20 @@ const nav = [
     path: "/home",
   },
   {
-    name: "Movies",
+    name: "Latest Movies",
     path: "/home/catalog/movies",
+  },
+  {
+    name: "Top Movies",
+    path: "/home/catalog/top-movies",
   },
   {
     name: "TV Shows",
     path: "/home/catalog/tv-shows",
+  },
+  {
+    name: "About",
+    path: "/about",
   },
 ];
 

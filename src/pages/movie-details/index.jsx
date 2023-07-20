@@ -17,7 +17,7 @@ export default function MovieDetails() {
   const [videos, setVideos] = useState([]);
   const [preloader, setPreloader] = useState(true);
   const [title, setTitle] = useState("");
-
+  console.log("movieDetails", movieDetails);
   const fetchDetails = async () => {
     try {
       const params = {};

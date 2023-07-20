@@ -4,6 +4,7 @@ import { Navigate, useRoutes } from "react-router-dom";
 import { MainLayout } from "../layouts";
 import About from "../pages/about";
 import IndexPage from "../pages/indexpage";
+import TopMovies from "../pages/topmovies";
 
 // ----------------------------------------------------------------------
 
@@ -27,6 +28,7 @@ export default function Router() {
             { path: ":category", element: <Catalog /> },
             { path: ":category/:id", element: <MovieDetails /> },
             { path: ":category/:id/play", element: <PlayMovie /> },
+            { path: "top-movies", element: <TopMovies /> },
           ],
         },
       ],

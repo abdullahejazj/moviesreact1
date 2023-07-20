@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 // components
-import MovieItem from './MovieItem';
-import Slider from 'react-slick';
-import PrevArrow from './PrevArrow';
-import NextArrow from './NextArrow';
-import Preloader from '../../components/preloader';
+import MovieItem from "./MovieItem";
+import Slider from "react-slick";
+import PrevArrow from "./PrevArrow";
+import NextArrow from "./NextArrow";
+import Preloader from "../../components/preloader";
 // api
-import { tmdbApi, category, movieType, tvType } from '../../api';
+import { tmdbApi, category, movieType, tvType } from "../../api";
 
 // ----------------------------------------------------------------------
 
-export default function MovieList ({ type, category: _category, title, id }) {
+export default function MovieList({ type, category: _category, title, id }) {
   const [movies, setMovies] = useState([]);
   const [preloader, setPreloader] = useState(true);
 
@@ -18,7 +18,7 @@ export default function MovieList ({ type, category: _category, title, id }) {
     infinite: true,
     autoplay: true,
     slidesToShow: 5,
-    slidesToScroll: 5,
+    slidesToScroll: 1,
     centerPadding: 0,
     swipeToSlide: true,
     pauseOnHover: true,
@@ -29,21 +29,21 @@ export default function MovieList ({ type, category: _category, title, id }) {
         breakpoint: 1700,
         settings: {
           slidesToShow: 5,
-          slidesToScroll: 4,
+          slidesToScroll: 1,
         },
       },
       {
         breakpoint: 1280,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
         },
       },
       {
         breakpoint: 813,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         },
       },
       {
@@ -62,7 +62,7 @@ export default function MovieList ({ type, category: _category, title, id }) {
       const params = {};
 
       try {
-        if (type !== 'similar') {
+        if (type !== "similar") {
           switch (_category) {
             case category.movie:
               if (type === movieType.trending) {
@@ -90,7 +90,7 @@ export default function MovieList ({ type, category: _category, title, id }) {
         } else {
           response = await tmdbApi.similar(_category, id);
         }
-      } catch (error) { }
+      } catch (error) {}
       setMovies(response.results);
       setPreloader(false);
     };

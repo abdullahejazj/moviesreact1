@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import MovieItem from './MovieItem';
-import Preloader from '../../components/preloader';
+import React, { useState, useEffect } from "react";
+import MovieItem from "./MovieItem";
+import Preloader from "../../components/preloader";
 // api
-import { tmdbApi, movieType, tvType, category } from '../../api';
-import { useDebounce } from '../../hooks';
+import { tmdbApi, movieType, tvType, category } from "../../api";
+import { useDebounce } from "../../hooks";
 
 // ----------------------------------------------------------------------
 
-export default function MovieGrid({ category: _category }) {
+export default function MovieGrid({ category: _category, type }) {
   const [items, setItems] = useState([]);
   const [items2, setItems2] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
   const [preloader, setPreloader] = useState(true);
@@ -24,9 +24,12 @@ export default function MovieGrid({ category: _category }) {
       try {
         switch (_category) {
           case category.movie:
-            response = await tmdbApi.getMoviesList(movieType.upcoming, {
-              params,
-            });
+            response = await tmdbApi.getMoviesList(
+              type ? type : movieType.upcoming,
+              {
+                params,
+              }
+            );
             break;
           default:
             response = await tmdbApi.getTvList(tvType.popular, {
@@ -40,7 +43,7 @@ export default function MovieGrid({ category: _category }) {
       setPreloader(false);
     };
     getList();
-    setSearchTerm('');
+    setSearchTerm("");
   }, [_category]);
 
   const handleLoadMore = async () => {
@@ -125,7 +128,9 @@ export default function MovieGrid({ category: _category }) {
         }
       >
         {items.length > 0 &&
-          items.map((item, i) => <MovieItem key={i} item={item} category={_category} />)}
+          items.map((item, i) => (
+            <MovieItem key={i} item={item} category={_category} />
+          ))}
       </div>
 
       {page < totalPage && items && (
@@ -140,7 +145,7 @@ export default function MovieGrid({ category: _category }) {
               height="20"
               className="ml-0 transform duration-200 group-hover:translate-x-1.5"
               viewBox="0 0 24 24"
-              style={{ fill: '#D1D5DB' }}
+              style={{ fill: "#D1D5DB" }}
             >
               <path d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"></path>
             </svg>
