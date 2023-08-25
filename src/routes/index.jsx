@@ -24,15 +24,14 @@ export default function Router() {
         { index: true, element: <Home /> },
         {
           path: "catalog",
-          children: [
-            { path: ":category", element: <Catalog /> },
-            { path: ":category/:id", element: <MovieDetails /> },
-            { path: ":category/:id/play", element: <PlayMovie /> },
-            { path: "top-movies", element: <TopMovies /> },
-          ],
+          children: [],
         },
       ],
     },
+    { path: ":category", element: <Catalog /> },
+    { path: ":category/:id/:name", element: <MovieDetails /> },
+    { path: ":category/:id/play/", element: <PlayMovie /> },
+    { path: "top-movies", element: <TopMovies /> },
     { path: "/", element: <IndexPage /> },
 
     { path: "*", element: <Navigate to="/home" replace /> },

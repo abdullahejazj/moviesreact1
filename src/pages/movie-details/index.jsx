@@ -43,18 +43,17 @@ export default function MovieDetails() {
   return (
     <Page title={title}>
       <BannerMovieDetails movieDetails={movieDetails} />
-      <div className="space-y-10 mb-10">
-        {videos && videos.map((item) => <Iframe key={item.id} item={item} />)}
-      </div>
-      <Cast />
-      <div className="w-11/12 mx-auto">
-        <div className="-mx-3">
-          <MovieList
-            category={category}
-            type="similar"
-            title="Similar"
-            id={id}
-          />
+      <div class="bg-black py-10">
+        <Cast />
+        <div className="w-11/12 mx-auto">
+          <div className="-mx-3">
+            <MovieList
+              category={category}
+              type="similar"
+              title="Similar"
+              id={id}
+            />
+          </div>
         </div>
       </div>
     </Page>

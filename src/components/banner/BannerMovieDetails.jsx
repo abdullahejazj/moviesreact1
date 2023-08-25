@@ -19,10 +19,7 @@ export default function BannerDetails({ movieDetails }) {
       ? movieDetails.poster_path
       : movieDetails.backdrop_path
   );
-  const path =
-    category === "movie"
-      ? `/home/catalog/movie/${id}/play`
-      : `/home/catalog/tv/${id}/play`;
+  const path = category === "movie" ? `/movie/${id}/play` : `/tv/${id}/play`;
 
   return (
     <div

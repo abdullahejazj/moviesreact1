@@ -11,40 +11,57 @@ export default function MovieGrid({ category: _category, type }) {
   const [items, setItems] = useState([]);
   const [items2, setItems2] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [page, setPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(0);
+  const [page, setPage] = useState(5);
+  const [totalPage, setTotalPage] = useState(1);
   const [preloader, setPreloader] = useState(true);
   const debouncedSearchTerm = useDebounce(searchTerm, 1000);
 
   useEffect(() => {
     const getList = async () => {
       setPreloader(true);
-      let response = null;
-      const params = {};
+      const maxItems = 200; // Desired total number of items
+      const itemsPerPage = 20; // Number of items per page
+      const pagesToFetch = Math.ceil(maxItems / itemsPerPage); // Calculate how many pages to fetch
+      let allItems = [];
+
       try {
-        switch (_category) {
-          case category.movie:
-            response = await tmdbApi.getMoviesList(
-              type ? type : movieType.upcoming,
-              {
+        for (let page = 1; page <= pagesToFetch; page++) {
+          let response = null;
+          const params = {
+            page: page,
+          };
+
+          switch (_category) {
+            case category.movie:
+              response = await tmdbApi.getMoviesList(
+                type ? type : movieType.upcoming,
+                {
+                  params,
+                }
+              );
+              break;
+            default:
+              response = await tmdbApi.getTvList(tvType.popular, {
                 params,
-              }
-            );
-            break;
-          default:
-            response = await tmdbApi.getTvList(tvType.popular, {
-              params,
-            });
+              });
+          }
+
+          if (response) {
+            allItems = [...allItems, ...response.results];
+          }
         }
-      } catch (error) {}
-      setItems(response.results);
-      setItems2(response.results);
-      setTotalPage(response.total_pages);
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+      }
+
+      setItems(allItems.slice(0, maxItems)); // Keep only the desired number of items
+      setItems2(allItems);
       setPreloader(false);
     };
+
     getList();
     setSearchTerm("");
-  }, [_category]);
+  }, [_category, type]);
 
   const handleLoadMore = async () => {
     setPreloader(true);

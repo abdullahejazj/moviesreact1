@@ -13,7 +13,6 @@ const MainLayout = () => {
     <div style={{ backgroundColor: "#262626" }}>
       <div className="max-w-screen-2xl mx-auto">
         <div className="relative min-h-screen">
-          <Header />
           <Outlet />
 
           <Footer />

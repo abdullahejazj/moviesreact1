@@ -13,15 +13,15 @@ const nav = [
   },
   {
     name: "Latest Movies",
-    path: "/home/catalog/movies",
+    path: "/movies",
   },
   {
     name: "Top Movies",
-    path: "/home/catalog/top-movies",
+    path: "/top-movies",
   },
   {
     name: "TV Shows",
-    path: "/home/catalog/tv-shows",
+    path: "/tv-shows",
   },
   {
     name: "About",
@@ -40,11 +40,15 @@ export default function Header() {
     mobileRef.current.classList.toggle("-translate-y-full");
   };
 
+  const location = useLocation();
+
   useEffect(() => {
     if (data) {
-      document.title = data.header_title ? data.header_title : "Loading ...."; // Set the document title
+      if (location.pathname === "/" || location.pathname === "/home") {
+        document.title = data.header_title ? data.header_title : "Loading ...";
+      }
     }
-  }, [data]);
+  }, [data, location]);
 
   return (
     <header

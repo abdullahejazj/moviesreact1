@@ -29,9 +29,7 @@ export default function Overview({ title, overview }) {
   };
 
   const path =
-    category === "movie"
-      ? `/home/catalog/movie/${overview.id}`
-      : `/home/catalog/tv/${overview.id}`;
+    category === "movie" ? `/movie/${overview.id}` : `/tv/${overview.id}`;
   // const pathPlay = category === 'movie' ? `/movie/${overview.id}/play` : `/tv/${overview.id}/play`;
 
   return (

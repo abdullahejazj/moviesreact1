@@ -17,13 +17,15 @@ export default function TopMovies() {
   }, []);
   const isMovie = category === "movies";
   return (
-    <Page title="Home">
-      <Ads />
-      <MovieGrid
-        category={category.movie}
-        type={movieType.top_rated}
-        title="Top Rated Movies"
-      />
-    </Page>
+    <div className="bg-black">
+      <Page title="Home">
+        <Ads />
+        <MovieGrid
+          category={category.movie}
+          type={movieType.top_rated}
+          title="Top Rated Movies"
+        />
+      </Page>
+    </div>
   );
 }

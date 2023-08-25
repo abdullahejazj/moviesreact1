@@ -7,23 +7,20 @@ import { handleScrollToTop } from "../../utils";
 // ----------------------------------------------------------------------
 
 export default function MovieItem({ item, category }) {
-  
   const background = imageApi.w500Image(
     item.backdrop_path ? item.backdrop_path : item.poster_path
   );
   const path =
-    category === "movie"
-      ? `/home/catalog/movie/${item.id}/play`
-      : `/home/catalog/tv/${item.id}/play`;
+    category === "movie" ? `/movie/${item.id}/play` : `/tv/${item.id}/play`;
 
   const pathInfo =
     category === "movie"
-      ? `/home/catalog/movie/${item.id}`
-      : `/home/catalog/tv/${item.id}`;
+      ? `/movie/${item.id}/${item.title}`
+      : `/tv/${item.id}/${item.name}`;
 
   return (
     <Link to={pathInfo} onClick={handleScrollToTop}>
-      <div className="relative movie__item h-380 bg-cover bg-center bg-no-repeat group duration-200 my-3 mx-3 shadow-lg hover:shadow-lg border-l-0 hover:border-l-4 border-red-600 overflow-hidden rounded-md">
+      <div className="bg-black relative movie__item h-380 bg-cover bg-center bg-no-repeat group duration-200 my-3 mx-3 shadow-lg hover:shadow-lg border-l-0 hover:border-l-4 border-red-600 overflow-hidden rounded-md">
         <div className="absolute top-0 left-0 w-full h-full">
           <img
             src={imageApi.w500Image(item.poster_path)}
@@ -31,7 +28,7 @@ export default function MovieItem({ item, category }) {
             alt=""
           />
         </div>
-        <div className="absolute top-0 left-0 w-full h-full overlay overlay-5" />
+        <div className="absolute top-0 left-0 w-full h-full overlay overlay-" />
         <div className="absolute top-0 left-0 w-full h-full">
           <div className="text-gray-300 block mx-auto h-full p-5">
             <h3 className="line-2 text-xl hover:text-gray-400 duration-200">

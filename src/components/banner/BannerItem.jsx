@@ -34,7 +34,7 @@ export default function BannerItem({ item }) {
             </p>
             <div className="py-3 flex justify-between mt-414:justify-start mt-414:space-x-5 font-semibold tracking-wider uppercase banner__btn">
               <Link
-                to={`/home/catalog/movie/${item.id}/play`}
+                to={`/movie/${item.id}/play`}
                 className="px-3 mt-350:px-2 py-2 mt-414:px-4 mt-414:py-3 inline-flex items-center bg-red-600 btn__primary mt-350:space-x-3 rounded shadow-lg overflow-hidden"
               >
                 <svg
@@ -49,7 +49,7 @@ export default function BannerItem({ item }) {
               </Link>
 
               <Link
-                to={`/home/catalog/movie/${item.id}`}
+                to={`/movie/${item.id}`}
                 className="px-3 mt-350:px-2 py-2 mt-414:px-4 mt-414:py-3 inline-flex items-center bg-blue-600 btn__primary mt-350:space-x-3 rounded shadow-lg overflow-hidden"
               >
                 <svg

@@ -19,9 +19,11 @@ export default function Catalog() {
   }, [category]);
 
   return (
-    <Page title={isMovie ? "Movies" : "TV Shows"}>
-      <CatalogBanner category={isMovie ? "Movies" : "TV Shows"} />
-      <MovieGrid category={isMovie ? "movie" : "tv"} />
-    </Page>
+    <div className="bg-black">
+      <Page title={isMovie ? "Movies" : "TV Shows"}>
+        <CatalogBanner category={isMovie ? "Movies" : "TV Shows"} />
+        <MovieGrid category={isMovie ? "movie" : "tv"} />
+      </Page>
+    </div>
   );
 }
